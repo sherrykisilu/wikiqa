@@ -9,7 +9,7 @@ class ChecklistRenderer {
 
 	public static function render( object $parser, string $title = '', string $status = 'draft' ): array {
 		if ( method_exists( $parser, 'getOutput' ) ) {
-			$parser->getOutput()->addModules( 'ext.wikiQA.styles' );
+			$parser->getOutput()->addModules( [ 'ext.wikiQA.styles' ] );
 		}
 
 		$cleanTitle = trim( $title ) !== '' ? trim( $title ) : 'Quality checklist';

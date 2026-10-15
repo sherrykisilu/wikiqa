@@ -5,8 +5,10 @@ declare( strict_types=1 );
 namespace MediaWiki\Parser {
 	class ParserOutput {
 		public array $modules = [];
-		public function addModules( string $module ): void {
-			$this->modules[] = $module;
+		public function addModules( array|string $modules ): void {
+			foreach ( (array)$modules as $module ) {
+				$this->modules[] = $module;
+			}
 		}
 	}
 
