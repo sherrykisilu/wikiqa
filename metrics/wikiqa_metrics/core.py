@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-from datetime import datetime, timezone
 import json
-from pathlib import Path
 import statistics
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from pathlib import Path
 
 import yaml
 
@@ -19,7 +19,7 @@ class SlaTargets:
 
 
 def _parse_time(value: str) -> datetime:
-    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(UTC)
 
 
 def read_junit(paths: list[Path]) -> list[dict[str, object]]:
@@ -56,7 +56,10 @@ def read_issue_data(path: Path) -> list[dict[str, object]]:
 
 
 def calculate_metrics(
-    junit_paths: list[Path], manual_register: Path, issue_data: Path, targets: SlaTargets | None = None
+    junit_paths: list[Path],
+    manual_register: Path,
+    issue_data: Path,
+    targets: SlaTargets | None = None,
 ) -> dict[str, object]:
     targets = targets or SlaTargets()
     cases = read_junit(junit_paths)
@@ -113,8 +116,18 @@ def format_text(metrics: dict[str, object]) -> str:
     rows = [
         ("Test pass rate", metrics["pass_rate"], targets["pass_rate"], True),
         ("Flake rate", metrics["flake_rate"], targets["flake_rate"], False),
-        ("Mean time to fix", metrics["mean_time_to_fix_hours"], targets["mean_time_to_fix_hours"], False),
-        ("Automation coverage", metrics["automation_coverage"], targets["automation_coverage"], True),
+        (
+            "Mean time to fix",
+            metrics["mean_time_to_fix_hours"],
+            targets["mean_time_to_fix_hours"],
+            False,
+        ),
+        (
+            "Automation coverage",
+            metrics["automation_coverage"],
+            targets["automation_coverage"],
+            True,
+        ),
         ("SLA attainment", metrics["sla_attainment"], 1.0, True),
     ]
     for label, value, target, higher_is_better in rows:
@@ -125,5 +138,7 @@ def format_text(metrics: dict[str, object]) -> str:
             rendered_value = f"{value:.2f} hours"
             rendered_target = f"{target:.0f} hours"
         met = value >= target if higher_is_better else value <= target
-        lines.append(f"- {label}: {rendered_value} (target {rendered_target}) — {'met' if met else 'missed'}")
+        lines.append(
+            f"- {label}: {rendered_value} (target {rendered_target}) — {'met' if met else 'missed'}"
+        )
     return "\n".join(lines)

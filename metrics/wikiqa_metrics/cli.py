@@ -8,10 +8,18 @@ from wikiqa_metrics.core import calculate_metrics, format_text
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Report QA service metrics from test and issue evidence.")
-    parser.add_argument("--junit", action="append", type=Path, required=True, help="JUnit XML file.")
-    parser.add_argument("--manual-register", type=Path, required=True, help="Manual test register YAML.")
-    parser.add_argument("--issues", type=Path, required=True, help="GitHub issue or PR evidence JSON.")
+    parser = argparse.ArgumentParser(
+        description="Report QA service metrics from test and issue evidence."
+    )
+    parser.add_argument(
+        "--junit", action="append", type=Path, required=True, help="JUnit XML file."
+    )
+    parser.add_argument(
+        "--manual-register", type=Path, required=True, help="Manual test register YAML."
+    )
+    parser.add_argument(
+        "--issues", type=Path, required=True, help="GitHub issue or PR evidence JSON."
+    )
     parser.add_argument("--format", choices=["text", "json"], default="text")
     return parser
 

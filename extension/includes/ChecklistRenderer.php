@@ -4,13 +4,13 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\WikiQA;
 
-use MediaWiki\Parser\Parser;
-
 class ChecklistRenderer {
 	private const ALLOWED_STATUSES = [ 'draft', 'ready', 'blocked' ];
 
-	public static function render( Parser $parser, string $title = '', string $status = 'draft' ): array {
-		$parser->getOutput()->addModules( 'ext.wikiQA.styles' );
+	public static function render( object $parser, string $title = '', string $status = 'draft' ): array {
+		if ( method_exists( $parser, 'getOutput' ) ) {
+			$parser->getOutput()->addModules( 'ext.wikiQA.styles' );
+		}
 
 		$cleanTitle = trim( $title ) !== '' ? trim( $title ) : 'Quality checklist';
 		$cleanStatus = self::normaliseStatus( $status );
