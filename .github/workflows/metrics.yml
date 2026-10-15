@@ -1,0 +1,18 @@
+name: Metrics
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .[dev]
+      - run: ruff check metrics scripts
+      - run: pytest metrics/tests
+      - run: wikiqa-metrics --junit metrics/tests/fixtures/phpunit.xml --junit metrics/tests/fixtures/playwright.xml --manual-register manual-tests/register.yml --issues metrics/tests/fixtures/issues.json --format json

@@ -1,0 +1,26 @@
+.wikiqa-checklist {
+	border: 1px solid #a2a9b1;
+	border-left: 6px solid #36c;
+	border-radius: 2px;
+	padding: 1rem;
+	margin: 1rem 0;
+	background: #f8f9fa;
+	color: #202122;
+}
+
+.wikiqa-checklist[data-status='ready'] {
+	border-left-color: #14866d;
+}
+
+.wikiqa-checklist[data-status='blocked'] {
+	border-left-color: #b32424;
+}
+
+.wikiqa-checklist h2 {
+	margin-top: 0;
+	font-size: 1.25rem;
+}
+
+.wikiqa-checklist__status {
+	font-weight: 700;
+}

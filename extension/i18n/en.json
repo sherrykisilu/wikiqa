@@ -1,0 +1,12 @@
+{
+  "@metadata": {
+    "authors": [
+      "Sherry Kisilu"
+    ]
+  },
+  "wikiqa-desc": "Adds a parser function for release-readiness QA checklist cards.",
+  "wikiqa-checklist-title": "Quality checklist",
+  "wikiqa-status-draft": "Draft",
+  "wikiqa-status-ready": "Ready",
+  "wikiqa-status-blocked": "Blocked"
+}

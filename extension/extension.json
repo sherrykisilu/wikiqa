@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "WikiQA",
+  "version": "0.1.0",
+  "author": "Sherry Kisilu",
+  "url": "https://github.com/sherrykisilu/wikiqa",
+  "descriptionmsg": "wikiqa-desc",
+  "type": "parserhook",
+  "license-name": "MIT",
+  "requires": {
+    "MediaWiki": ">= 1.39.0"
+  },
+  "AutoloadNamespaces": {
+    "MediaWiki\\Extension\\WikiQA\\": "includes/"
+  },
+  "MessagesDirs": {
+    "WikiQA": [
+      "i18n"
+    ]
+  },
+  "Hooks": {
+    "ParserFirstCallInit": "MediaWiki\\Extension\\WikiQA\\Hooks::onParserFirstCallInit"
+  },
+  "ResourceModules": {
+    "ext.wikiQA.styles": {
+      "styles": [
+        "resources/ext.wikiQA.styles.css"
+      ]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "",
+    "remoteExtPath": "WikiQA"
+  },
+  "TestAutoloadNamespaces": {
+    "MediaWiki\\Extension\\WikiQA\\Tests\\": "tests/phpunit/"
+  }
+}

@@ -1,0 +1,6 @@
+extends: existence
+message: "Use 'MediaWiki' with this capitalization. Rationale: project names should be consistent across user and contributor docs."
+level: error
+tokens:
+  - mediawiki
+  - Mediawiki

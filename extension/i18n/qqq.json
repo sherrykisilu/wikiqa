@@ -1,0 +1,12 @@
+{
+  "@metadata": {
+    "authors": [
+      "Sherry Kisilu"
+    ]
+  },
+  "wikiqa-desc": "Short extension description shown on Special:Version.",
+  "wikiqa-checklist-title": "Default heading for a checklist card when the parser function is called without a title.",
+  "wikiqa-status-draft": "Status label for a checklist that is still being prepared.",
+  "wikiqa-status-ready": "Status label for a checklist that is ready for release review.",
+  "wikiqa-status-blocked": "Status label for a checklist that cannot proceed until a release risk is resolved."
+}

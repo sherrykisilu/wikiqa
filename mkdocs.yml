@@ -1,0 +1,16 @@
+site_name: WikiQA
+site_description: Quality and documentation toolkit for MediaWiki extensions.
+repo_url: https://github.com/sherrykisilu/wikiqa
+nav:
+  - Home: index.md
+  - Extension API: extension-api.md
+  - Metrics: metrics.md
+  - Manual testing: manual-testing.md
+  - Decisions:
+      - Playwright over browser alternatives: decisions/0001-playwright.md
+      - Visual regression threshold: decisions/0002-visual-threshold.md
+      - Docs coverage gate: decisions/0003-docs-coverage.md
+      - SLA target choices: decisions/0004-sla-targets.md
+      - Deliberately not built: decisions/0005-not-built.md
+theme:
+  name: mkdocs

@@ -1,0 +1,25 @@
+cases:
+  - id: MT-001
+    title: Verify checklist card copy with release manager
+    area: extension
+    migration_status: automated
+    automated_by: tests/e2e/wikiqa.spec.ts
+    owner: QA services
+  - id: MT-002
+    title: Review visual diff for checklist status colors
+    area: visual-regression
+    migration_status: in_progress
+    automated_by: tests/e2e/wikiqa.spec.ts
+    owner: QA services
+  - id: MT-003
+    title: Confirm qqq message documentation with translator
+    area: internationalization
+    migration_status: manual
+    automated_by: null
+    owner: Documentation
+  - id: MT-004
+    title: Validate metrics report with release stakeholders
+    area: service-metrics
+    migration_status: automated
+    automated_by: metrics/tests/test_core.py
+    owner: QA services

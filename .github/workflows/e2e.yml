@@ -1,0 +1,30 @@
+name: E2E and visual regression
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: docker compose up -d database mediawiki
+      - name: Install MediaWiki
+        run: |
+          for i in {1..60}; do curl -fsS http://localhost:8080 >/dev/null && break || sleep 5; done
+          docker compose exec -T mediawiki php maintenance/install.php --dbserver database --dbname mediawiki --dbuser wiki --dbpass wiki --server http://localhost:8080 --scriptpath "" --pass AdminPassword123! WikiQA Admin
+          docker compose exec -T mediawiki sh -lc "printf '\nwfLoadExtension( '\''WikiQA'\'' );\n' >> LocalSettings.php"
+      - run: npx playwright test
+        env:
+          MEDIAWIKI_BASE_URL: http://localhost:8080
+          MEDIAWIKI_USER: Admin
+          MEDIAWIKI_PASSWORD: AdminPassword123!
+      - run: docker compose logs --no-color mediawiki database
+        if: failure()

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="playwright" tests="3" failures="1">
+  <testcase classname="wikiqa.spec.ts" name="renders checklist parser function" time="1.2" />
+  <testcase classname="wikiqa.spec.ts" name="matches checklist visual baseline" time="1.4">
+    <properties><property name="flaky" value="true" /></properties>
+  </testcase>
+  <testcase classname="wikiqa.spec.ts" name="documents blocked status" time="1.1"><failure message="blocked status copy changed" /></testcase>
+</testsuite>

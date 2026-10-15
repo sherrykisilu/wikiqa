@@ -1,0 +1,14 @@
+{
+  "name": "wikiqa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "docs:lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#vendor\" && vale .",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@vvago/vale": "^3.12.0",
+    "markdownlint-cli2": "^0.15.0"
+  }
+}

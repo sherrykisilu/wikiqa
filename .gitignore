@@ -1,0 +1,16 @@
+/vendor/
+/node_modules/
+/.pytest_cache/
+/.mypy_cache/
+/__pycache__/
+*.py[cod]
+/.venv/
+/playwright-report/
+/test-results/
+/coverage/
+/site/
+*.log
+.env
+.DS_Store
+
+*.egg-info/

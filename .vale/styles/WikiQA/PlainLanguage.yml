@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' instead of '%s'. Rationale: QA documentation should be readable by release managers and volunteer contributors, not only specialists."
+level: warning
+ignorecase: true
+swap:
+  utilize: use
+  leverage: use
+  simply: ""
+  obviously: ""

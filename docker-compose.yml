@@ -1,0 +1,26 @@
+services:
+  database:
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: mediawiki
+      MYSQL_USER: wiki
+      MYSQL_PASSWORD: wiki
+      MYSQL_ROOT_PASSWORD: rootpass
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - mediawiki-db:/var/lib/mysql
+  mediawiki:
+    image: mediawiki:1.41
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./extension:/var/www/html/extensions/WikiQA:ro
+volumes:
+  mediawiki-db:

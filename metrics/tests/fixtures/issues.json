@@ -1,0 +1,9 @@
+[
+  {
+    "number": 17,
+    "title": "Fix blocked status copy regression",
+    "opened_at": "2026-10-13T08:00:00Z",
+    "fixed_at": "2026-10-14T20:00:00Z",
+    "labels": ["test-failure", "extension"]
+  }
+]
