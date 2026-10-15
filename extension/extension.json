@@ -34,5 +34,8 @@
   },
   "TestAutoloadNamespaces": {
     "MediaWiki\\Extension\\WikiQA\\Tests\\": "tests/phpunit/"
+  },
+  "ExtensionMessagesFiles": {
+    "WikiQAMagic": "WikiQAMagic.php"
   }
 }
